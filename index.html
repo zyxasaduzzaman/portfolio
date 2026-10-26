@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Asaduzzaman — HTML • CSS • Python Developer</title>
+<meta name="description" content="Portfolio of Md. Asaduzzaman, a freelance HTML, CSS and Python developer from Bangladesh. BSc CSE student at DUET. Available for freelance projects, 2–3 hours per day.">
+<style>
+  :root {
+    --navy: #14375a;
+    --navy-dark: #0d2740;
+    --accent: #2f7de1;
+    --accent-light: #e8f1fc;
+    --text: #222;
+    --muted: #5a6b7c;
+    --bg: #ffffff;
+    --bg-soft: #f4f7fb;
+    --border: #dde5ee;
+    --gold: #c9a227;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color: var(--text); line-height: 1.6; background: var(--bg); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px; }
+
+  /* Nav */
+  nav { position: sticky; top: 0; z-index: 50; background: var(--navy); box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  nav .logo { color: #fff; font-weight: 700; font-size: 18px; letter-spacing: .5px; }
+  nav .logo span { color: var(--gold); }
+  nav ul { list-style: none; display: flex; gap: 4px; flex-wrap: wrap; }
+  nav ul a { color: #dbe6f2; font-size: 14px; padding: 8px 10px; border-radius: 6px; }
+  nav ul a:hover { background: rgba(255,255,255,.12); text-decoration: none; color: #fff; }
+  nav .nav-cv { background: var(--gold); color: var(--navy-dark); font-weight: 700; }
+  nav .nav-cv:hover { background: #d9b43a; color: var(--navy-dark); }
+
+  /* Hero */
+  header.hero { background: linear-gradient(135deg, var(--navy) 0%, #1d4e79 60%, #2568a3 100%); color: #fff; padding: 64px 0 56px; }
+  .hero-inner { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+  .hero-photo { width: 190px; height: 190px; border-radius: 50%; border: 5px solid var(--gold); object-fit: cover; flex-shrink: 0; background: #fff; }
+  .hero h1 { font-size: 40px; line-height: 1.15; margin-bottom: 6px; }
+  .hero .role { font-size: 19px; color: #ffd968; font-weight: 600; margin-bottom: 12px; }
+  .hero .tagline { font-size: 16px; color: #dbe6f2; max-width: 560px; margin-bottom: 8px; }
+  .badge { display: inline-block; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.35); color: #fff; font-size: 13px; padding: 5px 12px; border-radius: 20px; margin: 10px 0 18px; }
+  .badge .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4ade80; margin-right: 6px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 11px 22px; border-radius: 8px; font-weight: 700; font-size: 15px; border: 2px solid transparent; }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn-gold { background: var(--gold); color: var(--navy-dark); }
+  .btn-gold:hover { background: #d9b43a; }
+  .btn-outline { border-color: #fff; color: #fff; }
+  .btn-outline:hover { background: rgba(255,255,255,.12); }
+
+  /* Sections */
+  section { padding: 56px 0; }
+  section.alt { background: var(--bg-soft); }
+  h2 { font-size: 28px; color: var(--navy); margin-bottom: 6px; }
+  .section-sub { color: var(--muted); margin-bottom: 28px; font-size: 16px; }
+  h3 { font-size: 18px; color: var(--navy); margin-bottom: 6px; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 32px; }
+  .about-grid p { margin-bottom: 12px; }
+  .facts { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; }
+  .facts h3 { margin-bottom: 12px; }
+  .facts dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 15px; }
+  .facts dt { font-weight: 700; color: var(--navy); }
+  .facts dd { color: var(--text); }
+
+  /* Skills */
+  .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .skill-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; }
+  .skill-card h3 { margin-bottom: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--accent-light); color: var(--navy); border: 1px solid #c8dcf3; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+
+  /* Services */
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .service { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+  .service .icon { font-size: 30px; margin-bottom: 10px; }
+  .service p { color: var(--muted); font-size: 15px; }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .project { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; }
+  .project h3 a { color: var(--navy); }
+  .project .year { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .project p { color: var(--muted); font-size: 15px; flex-grow: 1; margin-bottom: 12px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tag { background: var(--bg-soft); border: 1px solid var(--border); padding: 3px 10px; border-radius: 14px; font-size: 12.5px; color: var(--navy); font-weight: 600; }
+  .project .gh-link { font-weight: 700; font-size: 14px; }
+
+  /* Education timeline */
+  .timeline { border-left: 3px solid var(--accent); margin-left: 8px; padding-left: 24px; }
+  .timeline-item { position: relative; margin-bottom: 28px; }
+  .timeline-item::before { content: ''; position: absolute; left: -32px; top: 6px; width: 13px; height: 13px; border-radius: 50%; background: var(--gold); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent); }
+  .timeline-item .when { font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .5px; }
+  .timeline-item p { color: var(--muted); font-size: 15px; }
+  .timeline-item .result { font-weight: 700; color: var(--navy); }
+
+  /* CV download */
+  .cv-box { background: var(--navy); color: #fff; border-radius: 16px; padding: 36px 32px; text-align: center; }
+  .cv-box h2 { color: #fff; }
+  .cv-box p { color: #dbe6f2; margin-bottom: 24px; }
+  .cv-box .cta-row { justify-content: center; }
+  .cv-box .btn-outline { border-color: var(--gold); color: #ffd968; }
+  .cv-box .btn-outline:hover { background: rgba(201,162,39,.15); }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .contact-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; }
+  .contact-card .label { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+  .contact-card .value { font-size: 16px; font-weight: 600; color: var(--navy); word-break: break-word; }
+
+  footer { background: var(--navy-dark); color: #9fb4c8; text-align: center; padding: 24px 0; font-size: 14px; }
+  footer a { color: #dbe6f2; }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 30px; }
+    .hero-photo { width: 150px; height: 150px; }
+    .about-grid { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+    section { padding: 40px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Asaduzzaman<span>.</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="nav-cv" href="#download-cv">Download CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <img class="hero-photo" src="photo.jpg" alt="Md. Asaduzzaman">
+    <div>
+      <h1>Md. Asaduzzaman</h1>
+      <div class="role">HTML &bull; CSS &bull; Python Developer</div>
+      <p class="tagline">I build clean, responsive websites and practical desktop applications. BSc in CSE student at DUET, Diploma in Computer Science &amp; Technology.</p>
+      <span class="badge"><span class="dot"></span>Available for Freelance Projects &mdash; 2&ndash;3 hrs/day</span>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#download-cv">Download CV</a>
+        <a class="btn btn-outline" href="#projects">View My Projects</a>
+        <a class="btn btn-outline" href="#contact">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About Me</h2>
+    <p class="section-sub">A developer from Thakurgaon, Bangladesh, turning ideas into working software.</p>
+    <div class="about-grid">
+      <div>
+        <p>I am a Computer Science student at Dhaka University of Engineering &amp; Technology (DUET), currently pursuing my BSc in Computer Science &amp; Engineering. Before that, I completed a four-year Diploma in Engineering in Computer Science &amp; Technology from Thakurgaon Government Polytechnic Institute, graduating with a CGPA of 3.90 out of 4.00.</p>
+        <p>I work as a freelance developer with HTML, CSS and Python. I enjoy building websites that look good on every screen and desktop applications that solve real, everyday problems &mdash; from business calculators to complete management systems with databases.</p>
+        <p>I take on project-based freelance work and give every project focused, honest effort &mdash; 2 to 3 hours a day, with clear communication from start to finish.</p>
+      </div>
+      <div class="facts">
+        <h3>Quick Facts</h3>
+        <dl>
+          <dt>Name</dt><dd>Md. Asaduzzaman</dd>
+          <dt>Based in</dt><dd>Baliadangi, Thakurgaon, Bangladesh</dd>
+          <dt>Education</dt><dd>BSc CSE, DUET (2026&ndash;2031)</dd>
+          <dt>Diploma</dt><dd>CST, CGPA 3.90/4.00</dd>
+          <dt>Focus</dt><dd>HTML, CSS, Python</dd>
+          <dt>Work type</dt><dd>Freelance projects</dd>
+          <dt>Languages</dt><dd>Bengali (Native), English</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="alt">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="section-sub">The tools and technologies I work with every day.</p>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h3>Web Development</h3>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Responsive Design</span><span class="chip">Front-End Development</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>Programming</h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">C</span><span class="chip">C++</span><span class="chip">Java</span><span class="chip">OOP</span><span class="chip">Problem Solving</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>Desktop Applications</h3>
+        <div class="chips"><span class="chip">Tkinter</span><span class="chip">CustomTkinter</span><span class="chip">PyQt6</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>Database &amp; Tools</h3>
+        <div class="chips"><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Git</span><span class="chip">GitHub</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2>Services</h2>
+    <p class="section-sub">What I can build for you, as a freelance project.</p>
+    <div class="services">
+      <div class="service">
+        <div class="icon">&#127760;</div>
+        <h3>Website Development</h3>
+        <p>Clean, responsive websites built with HTML and CSS &mdash; business pages, landing pages and personal sites that work on phone and desktop.</p>
+      </div>
+      <div class="service">
+        <div class="icon">&#127912;</div>
+        <h3>Front-End Development</h3>
+        <p>Pixel-careful front-end work: layouts, forms, navigation and mobile-friendly design, recreated or designed from your idea.</p>
+      </div>
+      <div class="service">
+        <div class="icon">&#128187;</div>
+        <h3>Python Desktop Apps</h3>
+        <p>Practical desktop applications with Tkinter, CustomTkinter or PyQt6 &mdash; calculators, business tools and utilities with a Bengali or English interface.</p>
+      </div>
+      <div class="service">
+        <div class="icon">&#128451;</div>
+        <h3>Database Applications</h3>
+        <p>Complete record-keeping systems with MySQL &mdash; employee, hotel and business management apps with full create, read, update and delete features.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="alt">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="section-sub">Selected work from my GitHub &mdash; every project is open source.</p>
+    <div class="projects">
+      <div class="project">
+        <h3><a href="https://github.com/zyxasaduzzaman/MyColorMind">MyColorMind</a></h3>
+        <div class="year">August 2025</div>
+        <p>Original Python library for color theory, built with clean object-oriented design, private attributes, docstrings and error handling.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">OOP</span><span class="tag">Library</span></div>
+        <a class="gh-link" href="https://github.com/zyxasaduzzaman/MyColorMind">View on GitHub &rarr;</a>
+      </div>
+      <div class="project">
+        <h3><a href="https://github.com/zyxasaduzzaman/BD_GEOINFO">BD_GEOINFO</a></h3>
+        <div class="year">August 2025</div>
+        <p>Bangladesh geographic data package covering divisions, districts, upazilas, unions and postcodes.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Data Package</span></div>
+        <a class="gh-link" href="https://github.com/zyxasaduzzaman/BD_GEOINFO">View on GitHub &rarr;</a>
+      </div>
+      <div class="project">
+        <h3><a href="https://github.com/zyxasaduzzaman/Paddy_Calculator">Paddy_Calculator</a></h3>
+        <div class="year">September 2024</div>
+        <p>Bengali-language business application for paddy trading calculations, with file-based data persistence.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Bengali UI</span></div>
+        <a class="gh-link" href="https://github.com/zyxasaduzzaman/Paddy_Calculator">View on GitHub &rarr;</a>
+      </div>
+      <div class="project">
+        <h3><a href="https://github.com/zyxasaduzzaman/EMPLOYEEMANAGEMENT">Employee Management System</a></h3>
+        <div class="year">August 2024</div>
+        <p>Full MySQL CRUD desktop application with a Tkinter interface for managing employee records.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">MySQL</span></div>
+        <a class="gh-link" href="https://github.com/zyxasaduzzaman/EMPLOYEEMANAGEMENT">View on GitHub &rarr;</a>
+      </div>
+      <div class="project">
+        <h3><a href="https://github.com/zyxasaduzzaman/HOTEL_MANAGEMENT_SYSTEM">Hotel Management System</a></h3>
+        <div class="year">August 2024</div>
+        <p>Full MySQL CRUD desktop application with a Tkinter interface for hotel rooms, bookings and billing.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">MySQL</span></div>
+        <a class="gh-link" href="https://github.com/zyxasaduzzaman/HOTEL_MANAGEMENT_SYSTEM">View on GitHub &rarr;</a>
+      </div>
+      <div class="project">
+        <h3><a href="https://github.com/zyxasaduzzaman/Cloning-facebook-home-page">Facebook Home Page Clone</a></h3>
+        <div class="year">October 2024</div>
+        <p>HTML &amp; CSS recreation of the Facebook home page layout.</p>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        <a class="gh-link" href="https://github.com/zyxasaduzzaman/Cloning-facebook-home-page">View on GitHub &rarr;</a>
+      </div>
+      <div class="project">
+        <h3><a href="https://github.com/zyxasaduzzaman/Amazon_clone">Amazon Clone</a></h3>
+        <div class="year">October 2024</div>
+        <p>HTML &amp; CSS recreation of the Amazon home page layout.</p>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        <a class="gh-link" href="https://github.com/zyxasaduzzaman/Amazon_clone">View on GitHub &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <p class="section-sub">My academic journey so far.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="when">2026 &ndash; 2031 &bull; Ongoing</div>
+        <h3>BSc in Computer Science &amp; Engineering</h3>
+        <p>Dhaka University of Engineering &amp; Technology (DUET)</p>
+      </div>
+      <div class="timeline-item">
+        <div class="when">2022 &ndash; 2026</div>
+        <h3>Diploma in Engineering &mdash; Computer Science &amp; Technology</h3>
+        <p>Thakurgaon Government Polytechnic Institute, Bangladesh Technical Education Board (BTEB)<br><span class="result">CGPA: 3.90 / 4.00</span> &bull; 8th Semester GPA: 4.00</p>
+      </div>
+      <div class="timeline-item">
+        <div class="when">2021</div>
+        <h3>Secondary School Certificate (SSC) &mdash; Science</h3>
+        <p>Kalomegh R. Ali High School &amp; College, Dinajpur Board<br><span class="result">GPA: 4.67 / 5.00</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="section-sub">Leadership roles beyond the classroom.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="when">Thakurgaon Polytechnic Institute</div>
+        <h3>Assistant Press Secretary &mdash; TPI CPC</h3>
+        <p>Thakurgaon Polytechnic Institute Computer and Programming Club (TPI CPC) &mdash; the institute's computer and programming club. Served as Assistant Press Secretary of the club.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="download-cv" class="alt">
+  <div class="wrap">
+    <div class="cv-box">
+      <h2>Download My CV</h2>
+      <p>Grab a copy of my CV in English or Bengali &mdash; same complete profile, in both languages.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="cv-english.pdf" download>Download CV &mdash; English (PDF)</a>
+        <a class="btn btn-outline" href="cv-bangla.pdf" download>Download CV &mdash; Bengali (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="section-sub">Have a project in mind? Get in touch &mdash; I reply to every message.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="label">Phone</div>
+        <div class="value"><a href="tel:+8801755328412">+880 1755-328412</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="label">WhatsApp</div>
+        <div class="value"><a href="https://wa.me/8801755328412">+880 1755-328412</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="label">Email</div>
+        <div class="value"><a href="mailto:zyxmdasaduzzaman@gmail.com">zyxmdasaduzzaman@gmail.com</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="label">LinkedIn</div>
+        <div class="value"><a href="https://www.linkedin.com/in/asaduzzaman-asad-801a80323">asaduzzaman-asad</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="label">GitHub</div>
+        <div class="value"><a href="https://github.com/zyxasaduzzaman">zyxasaduzzaman</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="label">Facebook</div>
+        <div class="value"><a href="https://facebook.com/zyxasaduzzaman">facebook.com/zyxasaduzzaman</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="label">Address</div>
+        <div class="value">Bengrol Jiabari, Kalmegh, Baliadangi, Thakurgaon, Bangladesh</div>
+      </div>
+      <div class="contact-card">
+        <div class="label">Availability</div>
+        <div class="value">Freelance projects, 2&ndash;3 hrs/day</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 Md. Asaduzzaman &nbsp;|&nbsp; <a href="https://github.com/zyxasaduzzaman">GitHub</a> &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/asaduzzaman-asad-801a80323">LinkedIn</a> &nbsp;|&nbsp; <a href="https://facebook.com/zyxasaduzzaman">Facebook</a>
+  </div>
+</footer>
+
+</body>
+</html>
